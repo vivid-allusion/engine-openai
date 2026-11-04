@@ -25,6 +25,9 @@ def test_images_are_synchronous_and_video_is_not():
             assert spec.content_path.startswith("videos/")
 
 
-def test_nothing_is_proven_before_a_real_call():
+def test_status_is_evidence_based():
     catalog = load_catalog()
-    assert {catalog.status(spec.model) for spec in catalog.specs()} == {"experimental"}
+    states = {catalog.status(spec.model) for spec in catalog.specs()}
+    assert states <= {"experimental", "beta", "proven"}
+    assert catalog.status("gpt-image-2.5-sunburst") == "beta"
+    assert states == {"experimental", "beta"}
