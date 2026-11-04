@@ -1,0 +1,7 @@
+platform: openai
+media_type: video
+endpoint: sora-2-pro
+description: Sora 2 Pro
+parameters: {}
+prompt_prefix: ""
+prompt_suffix: ""

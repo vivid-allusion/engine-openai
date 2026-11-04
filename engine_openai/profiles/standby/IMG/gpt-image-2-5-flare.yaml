@@ -1,0 +1,12 @@
+platform: openai
+media_type: image
+endpoint: gpt-image-2.5-flare
+description: GPT Image 2.5 Flare
+parameters:
+  size: "auto"
+  quality: "auto"
+  background: "auto"
+  output_format: "png"
+  n: 1
+prompt_prefix: ""
+prompt_suffix: ""

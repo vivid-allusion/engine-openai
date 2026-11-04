@@ -1,0 +1,12 @@
+platform: openai
+media_type: image
+endpoint: gpt-image-1
+description: GPT Image 1
+parameters:
+  size: "auto"
+  quality: "auto"
+  background: "auto"
+  output_format: "png"
+  n: 1
+prompt_prefix: ""
+prompt_suffix: ""
