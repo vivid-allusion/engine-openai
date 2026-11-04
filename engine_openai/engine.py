@@ -187,7 +187,8 @@ class Engine:
         path = spec.api_path or (VIDEO_SUBMIT_PATH if spec.kind == "video" else IMAGES_PATH)
 
         if spec.mode == "sync":
-            record = tasks.call_sync(request, path, payload, emit=self._emit, prefix=prefix)
+            body = {"model": spec.model, **payload}
+            record = tasks.call_sync(request, path, body, emit=self._emit, prefix=prefix)
             return tasks.assets_from(record)
 
         fields = {"model": spec.model, **{k: v for k, v in payload.items() if v != ""}}
@@ -217,7 +218,8 @@ class Engine:
             self._emit(f"{prefix} ⏳ {label}, retry {attempt}/{total} in {sleep:.1f}s")
 
         def request(method: str, path: str, payload: dict | None = None, *,
-                    headers: dict[str, str] | None = None) -> dict:
+                    headers: dict[str, str] | None = None,
+                    files: dict | None = None) -> dict:
             return transport.request_with_retry(
                 self._client(), method, path, payload, headers=headers,
                 retries=int(self._profile.get("retry_on_429", 4)),

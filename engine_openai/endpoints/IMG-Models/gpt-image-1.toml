@@ -1,0 +1,42 @@
+id = "gpt-image-1"
+label = "GPT Image 1"
+category = "IMG"
+platform = "openai"
+endpoint = "gpt-image-1"
+api_path = "images/generations"
+mode = "sync"
+description = "GPT Image 1: OpenAI image generation, one call in and one answer back."
+
+[pricing]
+note = "unset — take the price from OpenAI own pricing page before shipping"
+
+[general]
+kind = "image"
+prompt = "required"
+
+[params.size]
+label = "Size"
+type = "text"
+default = "auto"
+
+[params.quality]
+label = "Quality"
+type = "text"
+default = "auto"
+
+[params.background]
+label = "Background"
+type = "text"
+default = "auto"
+
+[params.output_format]
+label = "Output Format"
+type = "text"
+default = "png"
+
+[params.n]
+label = "Number of Images"
+type = "integer"
+default = 1
+min = 1
+max = 4

@@ -6,10 +6,10 @@ endpoint = "sora-2-pro"
 api_path = "videos"
 mode = "async"
 content_path = "videos/{id}/content"
-description = "Sora 2 Pro: OpenAI's video model. A job is created and polled, then the file is fetched from the content path."
+description = "Sora 2 Pro: OpenAI video model. A job is created and polled, then the file is fetched from the content path."
 
 [pricing]
-note = "unset — take the price from OpenAI's own pricing page before shipping"
+note = "unset — take the price from OpenAI own pricing page before shipping"
 
 [general]
 kind = "video"
@@ -19,9 +19,7 @@ content_path = "videos/{id}/content"
 [params.seconds]
 label = "Seconds"
 type = "text"
-note = "Provider-validated duration. Left unset, the provider default applies."
 
 [params.size]
 label = "Size"
 type = "text"
-note = "Provider-validated resolution. Left unset, the provider default applies."

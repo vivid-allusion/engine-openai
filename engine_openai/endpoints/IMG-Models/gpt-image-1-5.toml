@@ -5,10 +5,10 @@ platform = "openai"
 endpoint = "gpt-image-1.5"
 api_path = "images/generations"
 mode = "sync"
-description = "GPT Image 1.5: OpenAI's image generation model, one call in and one answer back."
+description = "GPT Image 1.5: OpenAI image generation, one call in and one answer back."
 
 [pricing]
-note = "unset — take the price from OpenAI's own pricing page before shipping"
+note = "unset — take the price from OpenAI own pricing page before shipping"
 
 [general]
 kind = "image"
@@ -18,7 +18,6 @@ prompt = "required"
 label = "Size"
 type = "text"
 default = "auto"
-note = "Provider-validated. The documented values differ per model generation; auto lets the model choose."
 
 [params.quality]
 label = "Quality"
