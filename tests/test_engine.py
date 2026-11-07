@@ -76,6 +76,37 @@ def test_an_image_comes_back_inline_and_is_saved(tmp_path, monkeypatch):
     assert results[0].metadata["api_payload"]["prompt"] == "a paper lantern"
 
 
+def test_reference_urls_route_to_the_edit_endpoint(tmp_path, monkeypatch):
+    client = FakeClient([{"data": [{"url": "https://cdn.invalid/out.png"}]}])
+    engine = make_engine(tmp_path, monkeypatch, client, endpoint="gpt-image-2.6-sunburst")
+    item = InputFile(
+        path=tmp_path / "shot.md",
+        prompt="a paper lantern",
+        reference_urls=["https://cdn.invalid/ref-1.png", "https://cdn.invalid/ref-2.png"],
+    )
+    results = engine.run([item])
+    assert [r.status for r in results] == ["ok"]
+    assert client.calls[0]["path"] == "images/edits"
+    assert client.calls[0]["payload"]["images"] == [
+        {"image_url": "https://cdn.invalid/ref-1.png"},
+        {"image_url": "https://cdn.invalid/ref-2.png"},
+    ]
+
+
+def test_more_than_16_reference_images_is_an_error(tmp_path, monkeypatch):
+    client = FakeClient([])
+    engine = make_engine(tmp_path, monkeypatch, client, endpoint="gpt-image-2.6-sunburst")
+    item = InputFile(
+        path=tmp_path / "shot.md",
+        prompt="a paper lantern",
+        reference_urls=[f"https://cdn.invalid/ref-{index}.png" for index in range(17)],
+    )
+    results = engine.run([item])
+    assert results[0].status == "error"
+    assert "up to 16" in results[0].error_msg
+    assert client.calls == []
+
+
 def test_base64_images_are_decoded_without_a_download(tmp_path, monkeypatch):
     import base64
 

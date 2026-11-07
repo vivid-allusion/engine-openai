@@ -11,7 +11,9 @@ Engine wrapper for **OpenAI** — images and video behind one interface.
 ## Two shapes, one interface
 
 - **Images answer inline.** `POST /images/generations` returns `data[]` with
-  either base64 bytes or a URL. No job, no polling.
+  either base64 bytes or a URL. No job, no polling. An input that carries
+  reference URLs goes to `POST /images/edits` instead, as JSON with an
+  `images` array of `{image_url}` objects; the answer has the same shape.
 - **Video is a job.** `POST /videos` (a form, not JSON) returns an id;
   `GET /videos/{id}` reports state; `GET /videos/{id}/content` is the file.
 
@@ -35,6 +37,7 @@ This engine's own tests, plus the shared conformance suite.
 
 ## Not carried yet
 
-`images/edits` and `images/variations` take an uploaded file rather than a URL,
-and video `input_reference` does too. They need a file-upload path in the
-engine; until then they are honestly absent rather than half-supported.
+`images/variations` and local file uploads (including video `input_reference`)
+still need a file-upload path in the engine; until then they are honestly
+absent rather than half-supported. Reference URLs in a markdown file are
+carried: they are sent to `images/edits` as `{image_url}` objects.

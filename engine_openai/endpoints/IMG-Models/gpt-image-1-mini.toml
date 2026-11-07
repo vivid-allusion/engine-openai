@@ -13,6 +13,8 @@ note = "unset — take the price from OpenAI own pricing page before shipping"
 [general]
 kind = "image"
 prompt = "required"
+image_url_param = "images"
+edit_api_path = "images/edits"
 
 [params.size]
 label = "Size"

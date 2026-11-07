@@ -50,6 +50,7 @@ NON_PAYLOAD_KEYS = frozenset(
         "prompt_suffix",
         "kind",
         "api_path",
+        "edit_api_path",
         "mode",
         "content_path",
         "concurrency",
@@ -88,6 +89,7 @@ class EndpointSpec:
     label: str = ""
     description: str = ""
     api_path: str = ""
+    edit_api_path: str = ""
     mode: str = "sync"
     content_path: str = ""
     image_url_param: str = ""
@@ -247,6 +249,7 @@ def _read_spec(path: Path, category: str) -> EndpointSpec | None:
         label=str(data.get("label") or data["id"]),
         description=str(data.get("description") or ""),
         api_path=str(data.get("api_path") or ""),
+        edit_api_path=str(general.get("edit_api_path") or data.get("edit_api_path") or ""),
         mode=str(data.get("mode") or "sync"),
         content_path=str(general.get("content_path") or data.get("content_path") or ""),
         image_url_param=str(general.get("image_url_param") or ""),

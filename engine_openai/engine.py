@@ -23,7 +23,7 @@ from typing import Any
 from . import outputs, tasks, transport
 from .catalog import Catalog, EndpointSpec, load_catalog
 from .datatypes import EngineError, InputFile, OutputFile, ProgressEvent
-from .payloads import build_input, compose_prompt
+from .payloads import build_input, compose_prompt, request_path
 
 DEFAULT_POLL_INTERVAL = 2.0
 DEFAULT_TASK_TIMEOUT = 3600.0
@@ -184,7 +184,9 @@ class Engine:
     def _dispatch(self, payload: dict, prefix: str, spec: EndpointSpec) -> list[dict]:
         """Return the assets, whichever shape the endpoint uses."""
         request = self._make_request(prefix)
-        path = spec.api_path or (VIDEO_SUBMIT_PATH if spec.kind == "video" else IMAGES_PATH)
+        path = request_path(spec, payload) or (
+            VIDEO_SUBMIT_PATH if spec.kind == "video" else IMAGES_PATH
+        )
 
         if spec.mode == "sync":
             body = {"model": spec.model, **payload}

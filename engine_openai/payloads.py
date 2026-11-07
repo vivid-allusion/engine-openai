@@ -51,6 +51,13 @@ def declared_media_key(profile: dict, spec: EndpointSpec) -> str:
     return str(profile.get("image_url_param") or spec.image_url_param or "")
 
 
+def request_path(spec: EndpointSpec, payload: dict) -> str:
+    """The route for this request: edits when reference images are present."""
+    if spec.edit_api_path and payload.get("images"):
+        return spec.edit_api_path
+    return spec.api_path
+
+
 def build_input(
     profile: dict,
     spec: EndpointSpec,
@@ -116,6 +123,14 @@ def encode_param(key: str, value: Any, spec: EndpointSpec) -> Any:
 
 
 def _add_media(payload: dict, profile: dict, spec: EndpointSpec, item: InputFile) -> None:
+    if spec.edit_api_path and item.reference_urls:
+        if len(item.reference_urls) > 16:
+            raise EngineError(
+                f"{spec.model} accepts up to 16 input images, but "
+                f"{item.path.name} carries {len(item.reference_urls)}"
+            )
+        payload["images"] = [{"image_url": url} for url in item.reference_urls]
+        return
     declared = declared_media_key(profile, spec)
     if item.reference_urls:
         if spec.known and not declared:
