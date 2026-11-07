@@ -24,6 +24,11 @@ label = "Quality"
 type = "text"
 default = "auto"
 
+[params.complexity]
+label = "Complexity"
+type = "text"
+default = "high"
+
 [params.background]
 label = "Background"
 type = "text"

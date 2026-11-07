@@ -5,9 +5,14 @@ description: GPT Image 2.5 Sunburst
 parameters:
   # size — "auto" lets the model choose. Or pick one:
   #   1024x1024 (square) | 1536x1024 (landscape) | 1024x1536 (portrait)
-  #   any <width>x<height>, e.g. 1536x864: both sides divisible by 16,
-  #   aspect ratio 1:3 to 3:1, maximum 3840x2160
-  #   (sizes above 2560x1440 are experimental)
+  #   2048x2048 (2K square) | 2048x1152 (2K landscape)
+  #   3840x2160 (4K landscape) | 2160x3840 (4K portrait)
+  #   custom <width>x<height> must also be:
+  #     both sides multiples of 16
+  #     long:short ratio between 1:3 and 3:1
+  #     no edge over 3840 px
+  #     total pixels 655,360 to 8,294,400
+  #   sizes above 2560x1440 are experimental
   size: "auto"
   # quality — auto | low | medium | high | xhigh | max
   quality: "auto"

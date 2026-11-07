@@ -5,12 +5,12 @@ description: GPT Image 2.6 Sunburst
 parameters:
   # size — "auto" lets the model choose. Or pick one:
   #   1024x1024 (square) | 1536x1024 (landscape) | 1024x1536 (portrait)
-  #   any <width>x<height>, e.g. 1536x864: both sides divisible by 16,
-  #   aspect ratio 1:3 to 3:1, maximum 3840x2160
-  #   (sizes above 2560x1440 are experimental)
+  # Custom WIDTHxHEIGHT is documented for GPT Image 2 and 2.5, not yet for 2.6.
   size: "auto"
   # quality — auto | low | medium | high | xhigh | max
   quality: "auto"
+  # complexity — low | medium | high (default high)
+  complexity: "high"
   # background — auto | opaque | transparent
   #   transparent requires output_format png or webp
   background: "auto"
