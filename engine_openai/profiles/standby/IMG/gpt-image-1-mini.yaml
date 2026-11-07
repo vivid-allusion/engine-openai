@@ -3,17 +3,16 @@ media_type: image
 endpoint: gpt-image-1-mini
 description: GPT Image 1 Mini
 parameters:
-  # size — "auto" lets the model choose. Or pick one:
-  #   1024x1024 (square) | 1536x1024 (landscape) | 1024x1536 (portrait)
+  # size: "auto" | "1024x1024" | "1536x1024" | "1024x1536"
   size: "auto"
-  # quality — auto | low | medium | high
+  # quality: "auto" | "low" | "medium" | "high"
   quality: "auto"
-  # background — auto | opaque | transparent
-  #   transparent requires output_format png or webp
+  # background: "auto" | "opaque" | "transparent"
+  #   "transparent" needs output_format "png" or "webp"
   background: "auto"
-  # output_format — png | webp | jpeg | gif | svg
+  # output_format: "png" | "webp" | "jpeg" | "gif" | "svg"
   output_format: "png"
-  # n — 1 to 10 images per call
+  # n: 1 to 10
   n: 1
 prompt_prefix: ""
 prompt_suffix: ""
