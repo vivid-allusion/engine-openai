@@ -2,10 +2,11 @@
 
 Engine wrapper for **OpenAI** — images and video behind one interface.
 
-**7 endpoints, taken from OpenAI's own OpenAPI document (captured 2026-11-04):**
-5 image models (`gpt-image-2.5-sunburst`, `gpt-image-2.5-flare`, `gpt-image-2`,
-`gpt-image-1.5`, `gpt-image-1-mini`) and 2 video models (`sora-2`, `sora-2-pro`).
-Every endpoint is `experimental` until a real call proves it.
+**16 catalogued models, taken from OpenAI's own OpenAPI document (captured
+2026-11-04, extended 2026-11-07):** 14 image ids — including
+`gpt-image-2.6-sunburst` and `gpt-image-2.6-flare` — and 2 video ids
+(`sora-2`, `sora-2-pro`). Each model's state is evidence-based; see
+`status.json`.
 
 ## Two shapes, one interface
 

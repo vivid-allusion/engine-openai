@@ -1,4 +1,4 @@
-"""The catalogue is small enough to read: five image models, two video models."""
+"""The catalogue is small enough to read: the image models, two video models."""
 
 import sys
 from pathlib import Path
@@ -31,3 +31,20 @@ def test_status_is_evidence_based():
     assert states <= {"experimental", "beta", "proven"}
     assert catalog.status("gpt-image-2.5-sunburst") == "beta"
     assert states == {"experimental", "beta"}
+
+
+def test_the_two_point_six_image_models_are_carried():
+    catalog = load_catalog()
+    for model in ("gpt-image-2.6-sunburst", "gpt-image-2.6-flare"):
+        spec = catalog.get(model)
+        assert spec.known
+        assert spec.category == "IMG"
+        assert spec.mode == "sync"
+
+
+def test_every_catalogued_model_has_a_standby_preset():
+    catalog = load_catalog()
+    standby = Path(__file__).resolve().parent.parent / "engine_openai" / "profiles" / "standby"
+    for spec in catalog.specs():
+        preset = standby / spec.category / f"{spec.id.replace('.', '-')}.yaml"
+        assert preset.is_file(), f"{spec.id} has no standby preset"
