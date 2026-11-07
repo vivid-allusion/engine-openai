@@ -3,10 +3,20 @@ media_type: image
 endpoint: gpt-image-2.5-sunburst-2026-09-08
 description: GPT Image 2.5 Sunburst (pinned)
 parameters:
+  # size — "auto" lets the model choose. Or pick one:
+  #   1024x1024 (square) | 1536x1024 (landscape) | 1024x1536 (portrait)
+  #   any <width>x<height>, e.g. 1536x864: both sides divisible by 16,
+  #   aspect ratio 1:3 to 3:1, maximum 3840x2160
+  #   (sizes above 2560x1440 are experimental)
   size: "auto"
+  # quality — auto | low | medium | high | xhigh | max
   quality: "auto"
+  # background — auto | opaque | transparent
+  #   transparent requires output_format png or webp
   background: "auto"
+  # output_format — png | webp | jpeg | gif | svg
   output_format: "png"
+  # n — 1 to 10 images per call
   n: 1
 prompt_prefix: ""
 prompt_suffix: ""

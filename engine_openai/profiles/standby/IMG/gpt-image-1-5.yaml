@@ -3,10 +3,17 @@ media_type: image
 endpoint: gpt-image-1.5
 description: GPT Image 1.5
 parameters:
+  # size — "auto" lets the model choose. Or pick one:
+  #   1024x1024 (square) | 1536x1024 (landscape) | 1024x1536 (portrait)
   size: "auto"
+  # quality — auto | low | medium | high
   quality: "auto"
+  # background — auto | opaque | transparent
+  #   transparent requires output_format png or webp
   background: "auto"
+  # output_format — png | webp | jpeg | gif | svg
   output_format: "png"
+  # n — 1 to 10 images per call
   n: 1
 prompt_prefix: ""
 prompt_suffix: ""

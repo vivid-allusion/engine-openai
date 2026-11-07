@@ -2,6 +2,10 @@ platform: openai
 media_type: video
 endpoint: sora-2-pro
 description: Sora 2 Pro
-parameters: {}
+parameters:
+  # size — 720x1280 (portrait) | 1280x720 (landscape) | 1024x1792 (tall) | 1792x1024 (wide)
+  size: "720x1280"
+  # seconds — "4" | "8" | "12"
+  seconds: "4"
 prompt_prefix: ""
 prompt_suffix: ""

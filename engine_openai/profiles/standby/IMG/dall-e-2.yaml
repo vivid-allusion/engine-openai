@@ -3,10 +3,16 @@ media_type: image
 endpoint: dall-e-2
 description: DALL·E 2
 parameters:
-  size: "auto"
-  quality: "auto"
-  background: "auto"
-  output_format: "png"
+  # Retired by OpenAI on 2026-05-12: calls fail; kept for reference.
+  # size — 256x256 | 512x512 | 1024x1024
+  size: "1024x1024"
+  # quality — standard
+  quality: "standard"
+  # background — not supported by DALL·E 2
+  # background: "auto"
+  # output_format — not supported by DALL·E 2 (the API returns URLs)
+  # output_format: "png"
+  # n — 1 to 10 images per call
   n: 1
 prompt_prefix: ""
 prompt_suffix: ""

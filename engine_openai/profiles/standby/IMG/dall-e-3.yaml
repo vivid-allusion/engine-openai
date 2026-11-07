@@ -3,10 +3,16 @@ media_type: image
 endpoint: dall-e-3
 description: DALL·E 3
 parameters:
-  size: "auto"
-  quality: "auto"
-  background: "auto"
-  output_format: "png"
+  # Retired by OpenAI on 2026-05-12: calls fail; kept for reference.
+  # size — 1024x1024 | 1792x1024 | 1024x1792
+  size: "1024x1024"
+  # quality — standard | hd
+  quality: "standard"
+  # background — not supported by DALL·E 3
+  # background: "auto"
+  # output_format — not supported by DALL·E 3 (the API returns URLs)
+  # output_format: "png"
+  # n — DALL·E 3 supports exactly 1
   n: 1
 prompt_prefix: ""
 prompt_suffix: ""
