@@ -23,23 +23,27 @@ default = "auto"
 
 [params.quality]
 label = "Quality"
-type = "text"
+type = "select"
 default = "auto"
+options = [{ value = "auto", label = "auto" }, { value = "low", label = "low" }, { value = "medium", label = "medium" }, { value = "high", label = "high" }, { value = "xhigh", label = "xhigh" }, { value = "max", label = "max" }]
 
 [params.complexity]
 label = "Complexity"
-type = "text"
+type = "select"
 default = "high"
+options = [{ value = "low", label = "low" }, { value = "medium", label = "medium" }, { value = "high", label = "high" }]
 
 [params.background]
 label = "Background"
-type = "text"
+type = "select"
 default = "auto"
+options = [{ value = "auto", label = "auto" }, { value = "opaque", label = "opaque" }, { value = "transparent", label = "transparent" }]
 
 [params.output_format]
 label = "Output Format"
-type = "text"
+type = "select"
 default = "png"
+options = [{ value = "png", label = "png" }, { value = "webp", label = "webp" }, { value = "jpeg", label = "jpeg" }, { value = "gif", label = "gif" }, { value = "svg", label = "svg" }]
 
 [params.n]
 label = "Number of Images"

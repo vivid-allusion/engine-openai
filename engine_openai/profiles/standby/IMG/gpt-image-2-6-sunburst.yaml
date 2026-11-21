@@ -15,7 +15,7 @@ parameters:
   # complexity: "low" | "medium" | "high" (default "high")
   complexity: "high"
   # background: "auto" | "opaque" | "transparent"
-  #   "transparent" needs output_format "png" or "webp"
+  #   transparent needs output_format "png" or "webp"
   background: "auto"
   # output_format: "png" | "webp" | "jpeg" | "gif" | "svg"
   output_format: "png"

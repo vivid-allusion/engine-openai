@@ -16,13 +16,15 @@ prompt = "required"
 
 [params.size]
 label = "Size"
-type = "text"
-default = "auto"
+type = "select"
+default = "1024x1024"
+options = [{ value = "1024x1024", label = "1024x1024" }, { value = "1792x1024", label = "1792x1024" }, { value = "1024x1792", label = "1024x1792" }]
 
 [params.quality]
 label = "Quality"
-type = "text"
-default = "auto"
+type = "select"
+default = "standard"
+options = [{ value = "standard", label = "standard" }, { value = "hd", label = "hd" }]
 
 [params.background]
 label = "Background"

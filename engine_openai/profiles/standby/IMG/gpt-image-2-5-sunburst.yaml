@@ -13,7 +13,7 @@ parameters:
   # quality: "auto" | "low" | "medium" | "high" | "xhigh" | "max"
   quality: "auto"
   # background: "auto" | "opaque" | "transparent"
-  #   "transparent" needs output_format "png" or "webp"
+  #   transparent needs output_format "png" or "webp"
   background: "auto"
   # output_format: "png" | "webp" | "jpeg" | "gif" | "svg"
   output_format: "png"
